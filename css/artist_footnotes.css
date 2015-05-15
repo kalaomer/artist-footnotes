@@ -1,0 +1,52 @@
+
+.artist-footnote-link {
+    color: #333;
+    border-radius: 4px;
+    padding: 2px 6px;
+    text-decoration: none;
+
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+
+    border: 1px solid #333 !important;
+
+    cursor: pointer;
+}
+
+.artist-footnote-link:hover {
+    border-color: #999 !important;
+}
+
+.mce-artist-footnotes-add-button i, .mce-artist-footnotes-remove-button i {
+    color: red !important;
+}
+
+#artist-footnote-show-content-area {
+    position: absolute;
+    bottom: -400px;
+    left: 0;
+    right: 0;
+
+    box-sizing: border-box;
+    padding: 50px 150px;
+
+    background: #fefefe;
+
+    transition: all .3s;
+
+    visibility: hidden;
+    display: block;
+
+    position: fixed;
+
+    border-top: 1px solid #999;
+}
+
+#artist-footnote-show-content-area.active {
+    visibility: visible;
+
+    bottom: 0;
+}
