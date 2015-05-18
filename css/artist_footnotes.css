@@ -43,6 +43,7 @@
     position: fixed;
 
     border-top: 1px solid #999;
+    z-index: 99999;
 }
 
 #artist-footnote-show-content-area.active {

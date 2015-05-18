@@ -24,6 +24,7 @@ function artist_register_buttons($buttons) {
 
 function artist_add_editor_styles() {
 	add_editor_style( plugins_url("/css/artist_footnotes.css", __FILE__));
+    wp_dequeue_script("artist_footnotes_script");
 }
 
 function artist_footnotes_area($content) {
