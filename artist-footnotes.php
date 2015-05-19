@@ -28,9 +28,36 @@ function artist_add_editor_styles() {
 }
 
 function artist_footnotes_area($content) {
-    $content .= "<div class=\"artist-footnotes-area\"></div>";
+
+    if (is_single()) {
+        $content .= '<div class="artist-footnotes-area"></div>';
+    }
 
     return $content;
+}
+
+function artist_footnotes_activate() {
+
+    if (is_admin() == false && is_single() == false) {
+        echo <<<HTML
+<script>
+    jQuery(function() {
+        window.artistFootnotes.disableNoteLinkElements();
+    });
+</script>
+HTML;
+    }
+
+    elseif (is_single()) {
+        echo <<<HTML
+<script>
+    jQuery(function() {
+        window.artistFootnotes.setPostPage();
+    });
+</script>
+HTML;
+
+    }
 }
 
 function artist_footnotes() {
@@ -38,6 +65,7 @@ function artist_footnotes() {
 	add_filter("mce_buttons", "artist_register_buttons");
 	add_action("admin_init", "artist_add_editor_styles");
     add_filter("the_content", "artist_footnotes_area");
+    add_action("wp_footer", "artist_footnotes_activate");
 
 	wp_enqueue_style("artist_footnotes_style", plugins_url("/css/artist_footnotes.css", __FILE__));
 	wp_enqueue_script("artist_footnotes_script", plugins_url("/js/artist_footnotes.js", __FILE__), ["jquery"]);

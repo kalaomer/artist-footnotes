@@ -4,14 +4,6 @@
         this.area = $(".artist-footnotes-area");
         this.noteLinkElements = $(".artist-footnote-link");
         this.notes = this.getNotes();
-
-        this.setNoteLinkElements();
-        this.setArea();
-
-        this.setShowContentArea();
-        this.setEventsForShowArea();
-
-        this.hideShowContent();
     };
 
     Footnotes.prototype = {
@@ -90,10 +82,26 @@
         showShowContent: function(html) {
             this.showContentArea.html(html)
                 .addClass("active");
+        },
+
+        setPostPage: function() {
+            this.setNoteLinkElements();
+            this.setArea();
+
+            this.setShowContentArea();
+            this.setEventsForShowArea();
+
+            this.hideShowContent();
+        },
+
+        disableNoteLinkElements: function() {
+            this.noteLinkElements.hide();
         }
     };
 
     $(function() {
         var footnotes = new Footnotes();
+
+        window.artistFootnotes = footnotes;
     });
 })(window, jQuery);
